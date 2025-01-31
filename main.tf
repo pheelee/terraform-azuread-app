@@ -50,9 +50,9 @@ resource "azuread_service_principal" "app" {
 }
 
 resource "azuread_app_role_assignment" "app" {
-  for_each            = toset(var.allowed_user_group_ids)
+  count               = length(var.allowed_user_group_ids)
   app_role_id         = "00000000-0000-0000-0000-000000000000"
-  principal_object_id = each.value
+  principal_object_id = var.allowed_user_group_ids[count.index]
   resource_object_id  = azuread_service_principal.app.object_id
 }
 
