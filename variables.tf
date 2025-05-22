@@ -3,6 +3,16 @@ variable "display_name" {
   description = "Displayname of the app"
 }
 
+variable "sign_in_audience" {
+  type        = string
+  description = "Sign-in audience of the app"
+  default     = "AzureADMyOrg"
+  validation {
+    condition     = contains(["AzureADMyOrg", "AzureADMultipleOrgs", "AzureADandPersonalMicrosoftAccount", "PersonalMicrosoftAccount"], var.sign_in_audience)
+    error_message = "Sign-in audience must be one of AzureADMyOrg or AzureADandPersonalMicrosoftAccount"
+  }
+}
+
 variable "secret_lifetime" {
   type        = number
   description = "Lifetime of the secret in days"

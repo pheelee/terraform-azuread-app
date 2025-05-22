@@ -10,7 +10,7 @@ data "azuread_service_principal" "graph" {
 resource "azuread_application" "app" {
   display_name     = var.display_name
   tags             = var.tags
-  sign_in_audience = "AzureADMyOrg"
+  sign_in_audience = var.sign_in_audience
   owners           = [data.azuread_client_config.me.object_id]
   dynamic "web" {
     for_each = length(var.web_redirect_uris) > 0 ? [1] : []

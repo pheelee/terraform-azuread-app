@@ -80,6 +80,7 @@ No modules.
 | graph\_oauth2\_permission\_scope\_ids | Pass azuread\_service\_principal.msgraph.oauth2\_permission\_scope\_ids here | `map(string)` | n/a | yes |
 | graph\_oauth2\_scopes | OAuth2 scopes for Microsoft Graph API to grant | `list(string)` | `[]` | no |
 | secret\_lifetime | Lifetime of the secret in days | `number` | `90` | no |
+| sign\_in\_audience | Sign-in audience of the app | `string` | `"AzureADMyOrg"` | no |
 | spa\_redirect\_uris | List of redirect URIs with type spa | `list(string)` | `[]` | no |
 | tags | Tags of the app | `list(string)` | <pre>[<br/>  "HideApp",<br/>  "WindowsAzureActiveDirectoryIntegratedApp"<br/>]</pre> | no |
 | web\_redirect\_uris | List of redirect URIs with type web | `list(string)` | `[]` | no |
