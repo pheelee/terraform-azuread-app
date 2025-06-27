@@ -79,6 +79,7 @@ No modules.
 | graph\_app\_roles | App roles for Microsoft Graph API to grant | `list(string)` | `[]` | no |
 | graph\_oauth2\_permission\_scope\_ids | Pass azuread\_service\_principal.msgraph.oauth2\_permission\_scope\_ids here | `map(string)` | n/a | yes |
 | graph\_oauth2\_scopes | OAuth2 scopes for Microsoft Graph API to grant | `list(string)` | `[]` | no |
+| requested\_access\_token\_version | Version of the access token | `number` | `1` | no |
 | secret\_lifetime | Lifetime of the secret in days | `number` | `90` | no |
 | sign\_in\_audience | Sign-in audience of the app | `string` | `"AzureADMyOrg"` | no |
 | spa\_redirect\_uris | List of redirect URIs with type spa | `list(string)` | `[]` | no |

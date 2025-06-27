@@ -12,6 +12,9 @@ resource "azuread_application" "app" {
   tags             = var.tags
   sign_in_audience = var.sign_in_audience
   owners           = [data.azuread_client_config.me.object_id]
+  api {
+    requested_access_token_version = var.sign_in_audience == "AzureADandPersonalMicrosoftAccount" ? 2 : var.requested_access_token_version
+  }
   dynamic "web" {
     for_each = length(var.web_redirect_uris) > 0 ? [1] : []
     content {

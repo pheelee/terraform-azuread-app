@@ -64,3 +64,9 @@ variable "allowed_user_group_ids" {
   description = "IDs of the users and groups that are allowed to access the app. If not specified the app is allowed for all users and groups"
   default     = []
 }
+
+variable "requested_access_token_version" {
+  type        = number
+  description = "Version of the access token"
+  default     = 1
+}
