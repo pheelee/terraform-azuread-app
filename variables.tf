@@ -70,3 +70,9 @@ variable "requested_access_token_version" {
   description = "Version of the access token"
   default     = 1
 }
+
+variable "app_roles" {
+  type        = map(list(string))
+  description = "Defines app roles with IDs of users and/or groups that are allowed to access the app"
+  default     = {}
+}

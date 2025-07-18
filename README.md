@@ -61,6 +61,7 @@ No modules.
 |------|------|
 | [azuread_app_role_assignment.app](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/app_role_assignment) | resource |
 | [azuread_app_role_assignment.graph](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/app_role_assignment) | resource |
+| [azuread_app_role_assignment.roles](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/app_role_assignment) | resource |
 | [azuread_application.app](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application) | resource |
 | [azuread_application_password.app](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application_password) | resource |
 | [azuread_service_principal.app](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/service_principal) | resource |
@@ -74,6 +75,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | allowed\_user\_group\_ids | IDs of the users and groups that are allowed to access the app. If not specified the app is allowed for all users and groups | `list(string)` | `[]` | no |
+| app\_roles | Defines app roles with IDs of users and/or groups that are allowed to access the app | `map(list(string))` | `{}` | no |
 | display\_name | Displayname of the app | `string` | n/a | yes |
 | graph\_app\_role\_ids | Pass azuread\_service\_principal.msgraph.app\_role\_ids here | `map(string)` | n/a | yes |
 | graph\_app\_roles | App roles for Microsoft Graph API to grant | `list(string)` | `[]` | no |

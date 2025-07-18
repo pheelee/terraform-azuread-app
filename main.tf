@@ -1,3 +1,12 @@
+locals {
+  object_to_app_role = merge([
+    for role, objects in var.app_roles : {
+      for obj in objects :
+      role => obj
+    }
+  ]...)
+}
+
 resource "time_rotating" "secret" {
   rotation_days = var.secret_lifetime
 }
@@ -44,6 +53,24 @@ resource "azuread_application" "app" {
       }
     }
   }
+  dynamic "app_role" {
+    for_each = keys(var.app_roles)
+    content {
+      enabled              = true
+      allowed_member_types = ["User"]
+      description          = "App role ${app_role.value}"
+      display_name         = app_role.value
+      id                   = format("00000000-0000-0000-00cf-000000000%03d", index(keys(var.app_roles), app_role.value) + 1)
+      value                = app_role.value
+    }
+  }
+}
+
+resource "azuread_app_role_assignment" "roles" {
+  for_each            = local.object_to_app_role
+  app_role_id         = azuread_application.app.app_role_ids[each.key]
+  principal_object_id = each.value
+  resource_object_id  = azuread_service_principal.app.object_id
 }
 
 resource "azuread_service_principal" "app" {
