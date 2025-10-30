@@ -3,7 +3,7 @@ terraform {
   required_providers {
     time = {
       source  = "hashicorp/time"
-      version = "~>0.12"
+      version = "~> 0.13"
     }
     azuread = {
       source  = "hashicorp/azuread"
